@@ -1,0 +1,52 @@
+iframe.uas {
+    border:0px;
+}
+
+a.uas_icon {
+    width: 128px;
+    height: 128px;
+}
+
+a.uas_icon img.uas_icon {
+    display: inline !important;
+}
+
+div.uas_banner {
+    max-width:600px; 
+    height: 130px;
+}
+
+iframe.uas_banner {
+    width: 600px; 
+    height: 130px;
+}
+
+div.uas_widget {
+    max-width: 202px;
+    display: inline;
+}
+
+iframe.uas_widget {
+    width: 202px;
+    height: 260px;
+}
+
+div.uas_list_banner {
+    max-width:600px;
+    height: 100px;
+}
+
+iframe.uas_list_banner {
+    width: 600px;
+    height: 100px;
+}
+
+div.uas_list_widget {
+    max-width: 300px;
+    display: inline;
+}
+
+iframe.uas_list_widget {
+    width: 300px;
+    height: 485px;
+}
