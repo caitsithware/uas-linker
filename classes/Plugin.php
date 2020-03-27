@@ -10,6 +10,7 @@ namespace caitsithware\UASLinker {
         private static $instance;
 
         private $initiated = false;
+        private $plguin_file_path;
 
         public static function get_user_settings() {
             return get_site_option( self::USER_SETTINGS );
@@ -28,6 +29,7 @@ namespace caitsithware\UASLinker {
         }
 
         private function __construct($plugin_file_path) {
+            $this->plguin_file_path = $plugin_file_path;
             register_activation_hook( $plugin_file_path, array( $this, 'on_activation' ) );
             register_uninstall_hook( $plugin_file_path, array( __CLASS__, 'on_uninstall' ) );
             
@@ -63,7 +65,7 @@ namespace caitsithware\UASLinker {
         }
 
         public function on_enqueue_scripts() {
-            wp_enqueue_style( 'uas_linker_style', plugins_url('style.css', __FILE__));
+            wp_enqueue_style( 'uas_linker_style', plugins_url('style.css', $this->plguin_file_path));
         }
 
         public function on_shortcode_uas($atts, $content=null) {
