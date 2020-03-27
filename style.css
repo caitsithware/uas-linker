@@ -8,47 +8,56 @@ a.uas_icon {
 }
 
 a.uas_icon img.uas_icon {
-    display: inline !important;
+    display: inline-block;
+    margin-bottom: 0.8em;
 }
 
 div.uas_banner {
     max-width:600px; 
     height: 130px;
-    margin-bottom: 1.6842em;
+    margin-bottom: 0.8em;
 }
 
 iframe.uas_banner {
     width: 600px; 
     height: 130px;
+    margin-bottom: 0;
 }
 
 div.uas_widget {
+    display: inline-block;
     max-width: 202px;
-    display: inline;
+    margin-bottom: 0.8em;
 }
 
 iframe.uas_widget {
+    display: inline-block;
     width: 202px;
     height: 260px;
+    margin-bottom: 0;
 }
 
 div.uas_list_banner {
     max-width:600px;
     height: 100px;
-    margin-bottom: 1.6842em;
+    margin-bottom: 0.8em;
 }
 
 iframe.uas_list_banner {
     width: 600px;
     height: 100px;
+    margin-bottom: 0;
 }
 
 div.uas_list_widget {
+    display: inline-block;
     max-width: 300px;
-    display: inline;
+    margin-bottom: 0.8em;
 }
 
 iframe.uas_list_widget {
+    display: inline-block;
     width: 300px;
     height: 485px;
+    margin-bottom: 0;
 }
