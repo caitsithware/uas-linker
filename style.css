@@ -28,6 +28,7 @@ div.uas_widget {
     display: inline-block;
     max-width: 202px;
     margin-bottom: 0.8em;
+    margin-right: 0.8em;
 }
 
 iframe.uas_widget {
@@ -53,6 +54,7 @@ div.uas_list_widget {
     display: inline-block;
     max-width: 300px;
     margin-bottom: 0.8em;
+    margin-right: 0.8em;
 }
 
 iframe.uas_list_widget {
