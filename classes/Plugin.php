@@ -75,11 +75,7 @@ namespace caitsithware\UASLinker {
                 $locale = 'ja_JP';
             }
 
-            if( $locale == 'en_US' || $locale == 'zh-CN' || $locale == 'ko_KR' || $locale == 'ja_JP' ) {
-                return '&locale=' . $locale;
-            } else {
-                return '';
-            }
+            return empty($locale)? '' : ('&locale=' . $locale);
         }
 
         public function on_shortcode_uas($atts, $content=null) {
