@@ -34,7 +34,7 @@ namespace caitsithware\UASLinker {
     require_once( __DIR__ . '/classes/Plugin.php' );
     Plugin::init( __FILE__ );
     
-    if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+    if ( is_admin() ) {
         require_once( __DIR__ . '/classes/Admin.php' );
         Admin::init( __FILE__ );
     }
