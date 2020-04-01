@@ -68,6 +68,20 @@ namespace caitsithware\UASLinker {
             wp_enqueue_style( 'uas_linker_style', plugins_url('style.css', $this->plguin_file_path));
         }
 
+        static function get_locale() 
+        {
+            $locale = get_locale();
+            if($locale == 'ja' ) {
+                $locale = 'ja_JP';
+            }
+
+            if( $locale == 'en_US' || $locale == 'zh-CN' || $locale == 'ko_KR' || $locale == 'ja_JP' ) {
+                return '&locale=' . $locale;
+            } else {
+                return '';
+            }
+        }
+
         public function on_shortcode_uas($atts, $content=null) {
             $params = shortcode_atts(
                 array( 'id' => '', 'class' => '', 'pubref' => '', 'type' => 'widget'
@@ -76,6 +90,8 @@ namespace caitsithware\UASLinker {
             if( !isset($params['id']) || $params['id'] == '' ) {
                 return '[uas] Error: id is required.';
             }
+
+            $locale = self::get_locale();
                     
             $pubref = empty($params['pubref']) ? '' : ('&pubref=' . $params['pubref']);
 
@@ -85,28 +101,28 @@ namespace caitsithware\UASLinker {
             switch(trim(strtolower($params['type'])))
             {
             case 'link':
-                $result = "<a href=\"https://assetstore.unity.com/packages/slug/{$params['id']}?aid={$key}{$pubref}\" target=\"_blank\" rel=\"noopener\" class=\"uas uas_link {$params['class']}\">{$content}</a>";
+                $result = "<a href=\"https://assetstore.unity.com/packages/slug/{$params['id']}?aid={$key}{$pubref}{$locale}\" target=\"_blank\" rel=\"noopener\" class=\"uas uas_link {$params['class']}\">{$content}</a>";
                 break;
         
             case 'icon':
-                $result = "<a href=\"https://assetstore.unity.com/packages/slug/{$params['id']}?aid={$key}{$pubref}\" target=\"_blank\" rel=\"noopener\" class=\"uas uas_icon {$params['class']}\"><img src=\"https://api.assetstore.unity3d.com/affiliate/embed/package/{$params['id']}/icon\" width=\"128\" height=\"128\" class=\"uas uas_icon\"></a>";
+                $result = "<a href=\"https://assetstore.unity.com/packages/slug/{$params['id']}?aid={$key}{$pubref}{$locale}\" target=\"_blank\" rel=\"noopener\" class=\"uas uas_icon {$params['class']}\"><img src=\"https://api.assetstore.unity3d.com/affiliate/embed/package/{$params['id']}/icon\" width=\"128\" height=\"128\" class=\"uas uas_icon\"></a>";
                 break;
         
             case 'banner':
-                $result = "<div class=\"uas_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget-wide?aid={$key}{$pubref}\" class=\"uas uas_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
+                $result = "<div class=\"uas_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget-wide?aid={$key}{$pubref}{$locale}\" class=\"uas uas_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
                 break;
         
             case 'banner-light':
-                $result = "<div class=\"uas_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget-wide-light?aid={$key}{$pubref}\" class=\"uas uas_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
+                $result = "<div class=\"uas_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget-wide-light?aid={$key}{$pubref}{$locale}\" class=\"uas uas_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
                 break;
                 
             case 'widget-light':
-                $result = "<div class=\"uas_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget-light?aid={$key}{$pubref}\" class=\"uas uas_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
+                $result = "<div class=\"uas_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget-light?aid={$key}{$pubref}{$locale}\" class=\"uas uas_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
                 break;
                 
             case 'widget':
             default:
-                $result = "<div class=\"uas_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget?aid={$key}{$pubref}\" class=\"uas uas_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
+                $result = "<div class=\"uas_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/package/{$params['id']}/widget?aid={$key}{$pubref}{$locale}\" class=\"uas uas_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
                 break;
             }
             return $result;
@@ -121,6 +137,8 @@ namespace caitsithware\UASLinker {
             if( !isset($params['id']) || $params['id'] == '' ) {
                 return '[uas_link] Error: id is required.';
             }
+
+            $locale = self::get_locale();
                     
             $pubref = empty($params['pubref']) ? '' : ('&pubref=' . $params['pubref']);
 
@@ -130,24 +148,24 @@ namespace caitsithware\UASLinker {
             switch(trim(strtolower($params['type'])))
             {
             case 'link':
-                $result = "<a href=\"https://assetstore.unity.com/lists/{$params['id']}?aid={$key}{$pubref}\" target=\"_blank\" rel=\"noopener\" class=\"uas uas_list_link {$params['class']}\">{$content}</a>";
+                $result = "<a href=\"https://assetstore.unity.com/lists/{$params['id']}?aid={$key}{$pubref}{$locale}\" target=\"_blank\" rel=\"noopener\" class=\"uas uas_list_link {$params['class']}\">{$content}</a>";
                 break;
         
             case 'banner':
-                $result = "<div class=\"uas_list_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-wide?aid={$key}{$pubref}\" class=\"uas uas_list_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
+                $result = "<div class=\"uas_list_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-wide?aid={$key}{$pubref}{$locale}\" class=\"uas uas_list_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
                 break;
                 
             case 'banner-light':
-                $result = "<div class=\"uas_list_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-wide-light?aid={$key}{$pubref}\" class=\"uas uas_list_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
+                $result = "<div class=\"uas_list_banner {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-wide-light?aid={$key}{$pubref}{$locale}\" class=\"uas uas_list_banner\" scrolling=\"no\" frameborder=\"no\"></iframe></div>";
                 break;
         
             case 'widget-light':
-                $result = "<div class=\"uas_list_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-medium-light?aid={$key}{$pubref}\" class=\"uas uas_list_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
+                $result = "<div class=\"uas_list_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-medium-light?aid={$key}{$pubref}{$locale}\" class=\"uas uas_list_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
                 break;
                 
             case 'widget':
             default:
-                $result = "<div class=\"uas_list_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-medium?aid={$key}{$pubref}\" class=\"uas uas_list_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
+                $result = "<div class=\"uas_list_widget {$params['class']}\"><iframe src=\"https://assetstore.unity.com/linkmaker/embed/list/{$params['id']}/widget-medium?aid={$key}{$pubref}{$locale}\" class=\"uas uas_list_widget\" scrolling=\"no\" frameborder=\"no\"></iframe></div>"; 
                 break;
             }
             return $result;
