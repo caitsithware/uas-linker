@@ -5,11 +5,11 @@
  */
 /*
 Plugin Name: Unity Asset Store Linker
-Plugin URI: http://caitsithware.com/wordpress/
+Plugin URI: https://github.com/caitsithware/uas-linker
 Description: Shortcode that embeds a link to UnityAssetStore
 Version: 1.0
 Author: caitsithware
-Author URI: http://caitsithware.com/wordpress/
+Author URI: https://github.com/caitsithware
 License: GPLv2 or later
 */
 
