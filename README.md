@@ -22,8 +22,8 @@ Shortcode that embeds a link to UnityAssetStore on Wordpress
 Embed links to assets
 
 ```
-[ual id="Asset ID" type="link" class="custom_class" pubref="pubref"]TEXT[/uas]
-[ual id="Asset ID" type="widget" class="custom_class" pubref="pubref" /]
+[uas id="Asset ID" type="link" class="custom_class" pubref="pubref"]TEXT[/uas]
+[uas id="Asset ID" type="widget" class="custom_class" pubref="pubref" /]
 ```
 
 * id(require) : Asset ID.
@@ -42,8 +42,8 @@ Embed links to assets
 Embed links to lists
 
 ```
-[ual_link id="List ID" type="link" class="custom_class" pubref="pubref"]TEXT[/uas]
-[ual_link id="List ID" type="widget" class="custom_class" pubref="pubref" /]
+[uas_list id="List ID" type="link" class="custom_class" pubref="pubref"]TEXT[/uas]
+[uas_list id="List ID" type="widget" class="custom_class" pubref="pubref" /]
 ```
 
 * id(require) : Asset ID.
