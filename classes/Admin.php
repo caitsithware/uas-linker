@@ -14,16 +14,17 @@ namespace caitsithware\UASLinker {
     
         private $initiated = false;
 
-        public static function init() {
+        public static function init($plugin_file_path) {
             if( isset(self::$instance) ) {
                 return;
             }
 
-            self::$instance = new Admin();
+            self::$instance = new Admin($plugin_file_path);
         }
     
-        private function __construct() {
+        private function __construct($plugin_file_path) {
             add_action( 'init', array( $this, 'on_init' ) );
+            add_filter('plugin_action_links_' . plugin_basename($plugin_file_path), array( $this, 'on_add_action_links') );
         }
     
         public function on_init() {
@@ -35,6 +36,12 @@ namespace caitsithware\UASLinker {
     
             add_action( 'admin_init', array( $this, 'on_admin_init' ) );
             add_action( 'admin_menu', array( $this, 'on_admin_menu' ) );
+        }
+
+        public function on_add_action_links($links) {
+            $settings_link = '<a href="' . admin_url('plugins.php?page=' . self::PAGE_SLUG ) . '">' . __('Settings') . '</a>';
+            array_unshift( $links, $settings_link );
+            return $links;
         }
     
         public function on_admin_init() {
